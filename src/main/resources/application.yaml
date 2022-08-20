@@ -1,0 +1,33 @@
+spring:
+  config:
+    import: optional:secret.yaml
+
+server:
+  port: 8080
+
+logging:
+  file:
+    name: './wiber-back/src/main/resources/log/wiber-back.log'
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+        amqp:
+          rabbit: DEBUG
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+        aop: DEBUG
+
+queue:
+  sms:
+    name: 'sms-queue'
+  car-request:
+    name: 'car-request-queue'
+  car-request-status:
+    name: 'car-request-status-queue'
+  locate-request:
+    name: 'locate-request-queue'
